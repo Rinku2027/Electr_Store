@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
     <configuration>
         <property name="PATTERN"
                   value="%white(%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}) %highlight(%-5level) [%cyan(traceId: %X{x-trace-id})] [%cyan(sourceIp: %X{x-source-ip})] [%cyan(userId: %X{x-userId})] [%green(%t)] %yellow(%logger{20})::%magenta(%L): - %msg%n"/>
@@ -7,7 +7,7 @@
         <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
             <file>${FILE_PATH}</file>
             <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-                <layout class="com.rinku.DataMaskingPatternLayout">
+                <layout class="com.rinku.electronic.store.ElectronicStore.DataMaskingPatternLayout">
                     <maskPattern>\"disputeImage\"\s*:\s*\"(.*?)\"</maskPattern> <!-- disputeImage -->
                     <maskPattern>\"feedbackImage\"\s*:\s*\"(.*?)\"</maskPattern> <!-- feedbackImage -->
                     <pattern>${PATTERN}</pattern>
@@ -26,7 +26,7 @@
 
         <appender name="DATA_MASK" class="ch.qos.logback.core.ConsoleAppender">
             <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-                <layout class="com.saksoft.DataMaskingPatternLayout">
+                <layout class="com.rinku.electronic.store.ElectronicStore.DataMaskingPatternLayout">
                     <maskPattern>(\w+@\w+\.\w+)</maskPattern> <!-- Email -->
                     <maskPattern>(^|\D)(\d{6})($|\D)</maskPattern> <!-- OTP -->
                     <maskPattern>(^|\D)(\d{16})($|\D)</maskPattern> <!-- Card Number -->
@@ -74,15 +74,15 @@
         </root>
 
         <!-- LOG at TRACE level -->
-        <logger name="com.rinku" level="trace" additivity="false">
+        <logger name="com.rinku.electronic.store.ElectronicStore" level="trace" additivity="false">
             <appender-ref ref="ASYNC_FILE"/>
             <appender-ref ref="ASYNC_CONSOLE"/>
         </logger>
-        <logger name="com.rinku" level="info" additivity="false">
+        <logger name="com.rinku.electronic.store.ElectronicStore" level="info" additivity="false">
             <appender-ref ref="ASYNC_FILE"/>
             <appender-ref ref="ASYNC_CONSOLE"/>
         </logger>
-        <logger name="com.rinku" level="debug" additivity="false">
+        <logger name="com.rinku.electronic.store.ElectronicStore" level="debug" additivity="false">
             <appender-ref ref="ASYNC_FILE"/>
             <appender-ref ref="ASYNC_CONSOLE"/>
         </logger>
@@ -92,4 +92,3 @@
             <appender-ref ref="ASYNC_CONSOLE"/>
         </logger>
     </configuration>
-
