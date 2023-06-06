@@ -18,9 +18,6 @@ import java.util.List;
 @RequestMapping("/users")
 @Slf4j
 public class UserController {
-
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
-
     @Autowired
     private UserService userService;
 

@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userRepo.save(user);
         UserDto updatedDto = entityToDto(updatedUser);
         logger.info(" Completed Request  for updating user with userId :{}", userId);
-
         return updatedDto;
     }
 
