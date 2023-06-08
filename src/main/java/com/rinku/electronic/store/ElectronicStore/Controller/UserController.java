@@ -45,8 +45,7 @@ public class UserController {
      * @return
      */
     @PutMapping("/{userId}")
-    public ResponseEntity<UserDto> updateUser(@Valid
-                                              @PathVariable("userId") String userId, @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> updateUser(@Valid @PathVariable("userId") String userId, @RequestBody UserDto userDto) {
         log.info("Request Starting for service layer to update user");
 
         UserDto updatedUserDto = userService.updateUser(userDto, userId);
@@ -83,10 +82,15 @@ public class UserController {
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers() {
+    public ResponseEntity<List<UserDto>> getAllUsers(
+            @RequestParam(value="pageNumber",defaultValue ="0",required = false) int pageNumber,
+            @RequestParam(value="PageSize",defaultValue = "10",required = false) int pageSize,
+            @RequestParam(value="sortBy",defaultValue ="name",required = false) String sortBy,
+            @RequestParam(value="sortDir",defaultValue = "asc",required = false) String sortDir
+            ) {
         log.info("Request  for service layer to get All user ");
 
-        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUser(pageNumber,pageSize,sortBy,sortDir), HttpStatus.OK);
     }
 
 
@@ -100,9 +104,7 @@ public class UserController {
 
     public ResponseEntity<UserDto> getUserById(@PathVariable String userId) {
         log.info("Request for service layer to get user by userId {}",userId);
-
         return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
-
     }
 
     /**

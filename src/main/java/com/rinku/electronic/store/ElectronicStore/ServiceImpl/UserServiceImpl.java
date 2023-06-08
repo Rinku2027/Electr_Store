@@ -5,15 +5,20 @@ import com.rinku.electronic.store.ElectronicStore.Exception.ResourceNotFoundExce
 import com.rinku.electronic.store.ElectronicStore.Helper.ApiConstants;
 import com.rinku.electronic.store.ElectronicStore.Repository.UserRepo;
 import com.rinku.electronic.store.ElectronicStore.Service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -76,13 +81,16 @@ public class UserServiceImpl implements UserService {
     }
 
     //GetAll USer
-    public List<UserDto> getAllUser() {
+    public List<UserDto> getAllUser(int pageNumber,int pageSize,String sortBy,String sortDir) {
         logger.info(" Initiated Request for getting Users");
-
-        List<User> users = userRepo.findAll();
+      Sort sort= (sortDir.equalsIgnoreCase("desc"))?
+              (Sort.by(sortBy).descending()):
+            (Sort.by(sortBy).ascending());
+        Pageable pageable= PageRequest.of(pageNumber,pageSize);
+        Page<User> page=userRepo.findAll(pageable);
+        List<User> users = page.getContent();
         List<UserDto> dtoList = users.stream().map(user -> entityToDto(user)).collect(Collectors.toList());
         logger.info(" completed Request  for getting users ");
-
         return dtoList;
     }
 
