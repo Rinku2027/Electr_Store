@@ -20,7 +20,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     /**
      *
      * @author Rinku Patil
@@ -36,7 +35,6 @@ public class UserController {
         return new ResponseEntity<>(userDto1, HttpStatus.CREATED);
 
     }
-
     /**
      * @author Rinku Patil
      * @ApiNote This API is used to Update user
@@ -47,12 +45,9 @@ public class UserController {
     @PutMapping("/{userId}")
     public ResponseEntity<UserDto> updateUser(@Valid @PathVariable("userId") String userId, @RequestBody UserDto userDto) {
         log.info("Request Starting for service layer to update user");
-
         UserDto updatedUserDto = userService.updateUser(userDto, userId);
         log.info("Request Starting for service layer to update user");
-
         return new ResponseEntity<>(updatedUserDto, HttpStatus.OK);
-
     }
 
     /**
@@ -64,7 +59,6 @@ public class UserController {
     @DeleteMapping("/{userId}")
     public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId) {
         log.info("Request Starting for service layer to delete user by userId {}",userId);
-
         userService.deleteUser(userId);
         ApiResponseMessage message = ApiResponseMessage
                 .builder()
@@ -89,11 +83,8 @@ public class UserController {
             @RequestParam(value="sortDir",defaultValue = "asc",required = false) String sortDir
             ) {
         log.info("Request  for service layer to get All user ");
-
         return new ResponseEntity<>(userService.getAllUser(pageNumber,pageSize,sortBy,sortDir), HttpStatus.OK);
     }
-
-
     /**
      * @author Rinku Patil
      * @ApiNote This API is used to Get Single User by Id
