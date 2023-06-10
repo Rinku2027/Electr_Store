@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.ServiceImpl;
+package com.rinku.electronic.store.ElectronicStore.Service.ServiceImpl;
 
 import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
 import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;

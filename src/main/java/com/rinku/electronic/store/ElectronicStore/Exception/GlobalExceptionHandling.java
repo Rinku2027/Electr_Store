@@ -1,6 +1,8 @@
 package com.rinku.electronic.store.ElectronicStore.Exception;
 
+import com.rinku.electronic.store.ElectronicStore.Dtos.ApiResponseMessage;
 import com.rinku.electronic.store.ElectronicStore.Helper.ApiResponse;
+import lombok.Builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Builder
 @RestControllerAdvice
 public class GlobalExceptionHandling {
     private Logger logger = LoggerFactory.getLogger(GlobalExceptionHandling.class);
@@ -20,9 +22,9 @@ public class GlobalExceptionHandling {
     public ResponseEntity<ApiResponse> ResourceNotFoundExceptionHandling(ResourceNotFoundException rs) {
 
         logger.info("Exception Handler Invoked");
-        String msg = rs.getMessage();
-        ApiResponse response = new ApiResponse(msg,false);
-        return new ResponseEntity<ApiResponse>(response, HttpStatus.BAD_REQUEST);
+     //   String msg = rs.getMessage();
+        ApiResponseMessage response =  ApiResponseMessage.builder().message(rs.getMessage()).status(HttpStatus.NOT_FOUND).success(true).build();
+                return new ResponseEntity(response, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -35,6 +37,13 @@ public class GlobalExceptionHandling {
             map.put(field, message);
         });
         return new ResponseEntity<Map<String, String>>(map, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(BadApiRequest.class)
+    public ResponseEntity<ApiResponse> handleBadApiRequest(BadApiRequest ex) {
+        logger.info("Bad Api Request");
+       // String msg = rs.getMessage();
+        ApiResponseMessage response = ApiResponseMessage.builder().message(ex.getMessage()).status(HttpStatus.BAD_REQUEST).success(false).build();
+        return new ResponseEntity(response,HttpStatus.BAD_REQUEST);
     }
 
 
