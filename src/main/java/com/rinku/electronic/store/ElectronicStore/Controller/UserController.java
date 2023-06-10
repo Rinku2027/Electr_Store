@@ -1,5 +1,6 @@
 package com.rinku.electronic.store.ElectronicStore.Controller;
 import com.rinku.electronic.store.ElectronicStore.Dtos.ApiResponseMessage;
+import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
 import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
 import com.rinku.electronic.store.ElectronicStore.Entity.User;
 import com.rinku.electronic.store.ElectronicStore.Service.UserService;
@@ -76,7 +77,7 @@ public class UserController {
      * @return
      */
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUsers(
+    public ResponseEntity<PageableResponse<UserDto>> getAllUsers(
             @RequestParam(value="pageNumber",defaultValue ="0",required = false) int pageNumber,
             @RequestParam(value="PageSize",defaultValue = "10",required = false) int pageSize,
             @RequestParam(value="sortBy",defaultValue ="name",required = false) String sortBy,

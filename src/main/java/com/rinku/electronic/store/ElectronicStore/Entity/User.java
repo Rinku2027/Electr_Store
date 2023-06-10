@@ -25,6 +25,7 @@ public class User extends CustomeFields{
     private String gender;
     @Column(name="About",length = 1000)
     private String about;
+    @Column(name="user_image_name")
     private String imageName;
 
 

@@ -1,8 +1,11 @@
 package com.rinku.electronic.store.ElectronicStore.ServiceImpl;
+
+import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
 import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
 import com.rinku.electronic.store.ElectronicStore.Entity.User;
 import com.rinku.electronic.store.ElectronicStore.Exception.ResourceNotFoundException;
 import com.rinku.electronic.store.ElectronicStore.Helper.ApiConstants;
+import com.rinku.electronic.store.ElectronicStore.Helper.Helper;
 import com.rinku.electronic.store.ElectronicStore.Repository.UserRepo;
 import com.rinku.electronic.store.ElectronicStore.Service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +18,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
-   @Autowired
+    @Autowired
     private UserRepo userRepo;
     @Autowired
     private ModelMapper mapper;
@@ -42,10 +47,8 @@ public class UserServiceImpl implements UserService {
 
     public UserDto updateUser(UserDto userDto, String userId) {
         logger.info(" Initiated Request  for updating user with userId :{}", userId);
-
         User user = this.userRepo.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE,userId,userId));
-
+                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
@@ -63,7 +66,7 @@ public class UserServiceImpl implements UserService {
         logger.info(" Initiated Request  for deleting user with userId :{}", userId);
 
         User user = this.userRepo.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE,userId,userId));
+                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
 
         logger.info(" Completed Request  for deleting user with userId :{}", userId);
 
@@ -75,28 +78,28 @@ public class UserServiceImpl implements UserService {
         logger.info(" Initiated Request  for getting user with userId :{}", userId);
 
         User user = this.userRepo.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE,userId,userId));
+                .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
         logger.info(" Completed Request  for getting user with userId :{}", userId);
         return entityToDto(user);
     }
 
     //GetAll USer
-    public List<UserDto> getAllUser(int pageNumber,int pageSize,String sortBy,String sortDir) {
+    public PageableResponse<UserDto> getAllUser(int pageNumber, int pageSize, String sortBy, String sortDir) {
         logger.info(" Initiated Request for getting Users");
-      Sort sort= (sortDir.equalsIgnoreCase("desc"))?
-              (Sort.by(sortBy).descending()):
-            (Sort.by(sortBy).ascending());
-        Pageable pageable= PageRequest.of(pageNumber,pageSize);
-        Page<User> page=userRepo.findAll(pageable);
-        List<User> users = page.getContent();
-        List<UserDto> dtoList = users.stream().map(user -> entityToDto(user)).collect(Collectors.toList());
+        Sort sort = (sortDir.equalsIgnoreCase("desc")) ?
+                (Sort.by(sortBy).descending()) :
+                (Sort.by(sortBy).ascending());
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<User> all = userRepo.findAll(pageable);
+        Page<User> page = all;
+        PageableResponse<UserDto> response = Helper.getPageableResponse(page, UserDto.class);
         logger.info(" completed Request  for getting users ");
-        return dtoList;
+        return response;
     }
 
     public UserDto getUserByEmail(String email) {
         User user = userRepo.findByEmail(email).
-                orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE,email,email));
+                orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, email, email));
 
         return entityToDto(user);
     }
