@@ -26,14 +26,14 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+  //  private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
     private UserRepo userRepo;
     @Autowired
     private ModelMapper mapper;
 
     public UserDto createUser(UserDto userDto) {
-        logger.info(" Initiated Request for creating user");
+        log.info(" Initiated Request for creating user");
         String UserID = UUID.randomUUID().toString();
         userDto.setUserId(UserID);
         //dto->entity
@@ -41,12 +41,11 @@ public class UserServiceImpl implements UserService {
         User saveUser = userRepo.save(user);
         //entity-> dto
         UserDto newDto = entityToDto(saveUser);
-        logger.info(" Completed Request for creating user");
+        log.info(" Completed Request for creating user");
         return newDto;
     }
-
     public UserDto updateUser(UserDto userDto, String userId) {
-        logger.info(" Initiated Request  for updating user with userId :{}", userId);
+        log.info(" Initiated Request  for updating user with userId :{}", userId);
         User user = this.userRepo.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
         user.setName(userDto.getName());
@@ -57,35 +56,29 @@ public class UserServiceImpl implements UserService {
         user.setImageName(userDto.getImageName());
         User updatedUser = userRepo.save(user);
         UserDto updatedDto = entityToDto(updatedUser);
-        logger.info(" Completed Request  for updating user with userId :{}", userId);
+        log.info(" Completed Request  for updating user with userId :{}", userId);
         return updatedDto;
     }
-
     //Delete User
     public void deleteUser(String userId) {
-        logger.info(" Initiated Request  for deleting user with userId :{}", userId);
-
+        log.info(" Initiated Request  for deleting user with userId :{}", userId);
         User user = this.userRepo.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
-
-        logger.info(" Completed Request  for deleting user with userId :{}", userId);
-
+        log.info(" Completed Request  for deleting user with userId :{}", userId);
         this.userRepo.delete(user);
     }
-
     //GetUserByID
     public UserDto getUserById(String userId) {
-        logger.info(" Initiated Request  for getting user with userId :{}", userId);
-
+        log.info(" Initiated Request  for getting user with userId :{}", userId);
         User user = this.userRepo.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(ApiConstants.EXCEPTION_MESSAGE, userId, userId));
-        logger.info(" Completed Request  for getting user with userId :{}", userId);
+        log.info(" Completed Request  for getting user with userId :{}", userId);
         return entityToDto(user);
     }
 
     //GetAll USer
     public PageableResponse<UserDto> getAllUser(int pageNumber, int pageSize, String sortBy, String sortDir) {
-        logger.info(" Initiated Request for getting Users");
+        log.info(" Initiated Request for getting Users");
         Sort sort = (sortDir.equalsIgnoreCase("desc")) ?
                 (Sort.by(sortBy).descending()) :
                 (Sort.by(sortBy).ascending());
@@ -93,7 +86,7 @@ public class UserServiceImpl implements UserService {
         Page<User> all = userRepo.findAll(pageable);
         Page<User> page = all;
         PageableResponse<UserDto> response = Helper.getPageableResponse(page, UserDto.class);
-        logger.info(" completed Request  for getting users ");
+        log.info(" completed Request  for getting users ");
         return response;
     }
 
@@ -121,7 +114,6 @@ public class UserServiceImpl implements UserService {
 //                .gender(savedUser.getGender())
 //                .imageName(savedUser.getImageName()).build();
 //                return userDto;
-
         return mapper.map(savedUser, UserDto.class);
     }
 

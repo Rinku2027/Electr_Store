@@ -24,10 +24,12 @@ public class FileServiceImpl implements FileService {
         String filename = UUID.randomUUID().toString();
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
         String fileNameWithExtension = filename + extension;
-        String fullPathWithFileName = path + File.separator + fileNameWithExtension;
-        if (extension.equalsIgnoreCase("png") || extension.equalsIgnoreCase("jpg") || extension.
-                equalsIgnoreCase("jpe") || extension.equalsIgnoreCase("jpeg"))
+        String fullPathWithFileName = path  + fileNameWithExtension;
+        logger.info("full image path : {}",fullPathWithFileName);
+
+        if (extension.equalsIgnoreCase(".png") || extension.equalsIgnoreCase(".jpg") || extension.equalsIgnoreCase(".jpeg"))
         {
+            logger.info("file extension  is {}",extension);
     File folder=new File(path);
     if(!folder.exists())
     {
