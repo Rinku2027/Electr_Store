@@ -1,8 +1,6 @@
-package com.rinku.electronic.store.ElectronicStore.Helper;
+package com.rinku.electronic.store.ElectronicStore.helper;
 
-import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
-import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
-import com.rinku.electronic.store.ElectronicStore.Entity.User;
+import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 

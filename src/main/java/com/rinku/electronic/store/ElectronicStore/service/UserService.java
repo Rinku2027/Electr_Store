@@ -1,7 +1,7 @@
-package com.rinku.electronic.store.ElectronicStore.Service;
+package com.rinku.electronic.store.ElectronicStore.service;
 
-import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
-import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
+import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
+import com.rinku.electronic.store.ElectronicStore.dtos.UserDto;
 
 import java.util.List;
 

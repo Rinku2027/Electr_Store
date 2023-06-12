@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Helper;
+package com.rinku.electronic.store.ElectronicStore.helper;
 
 public class ApiConstants {
 

@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Exception;
+package com.rinku.electronic.store.ElectronicStore.exception;
 
 import lombok.Getter;
 import lombok.Setter;

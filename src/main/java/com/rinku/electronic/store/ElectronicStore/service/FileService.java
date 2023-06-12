@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Service;
+package com.rinku.electronic.store.ElectronicStore.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

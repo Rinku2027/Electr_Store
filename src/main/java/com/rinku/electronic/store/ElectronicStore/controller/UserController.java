@@ -1,16 +1,12 @@
-package com.rinku.electronic.store.ElectronicStore.Controller;
+package com.rinku.electronic.store.ElectronicStore.controller;
 
-import com.rinku.electronic.store.ElectronicStore.Dtos.ApiResponseMessage;
-import com.rinku.electronic.store.ElectronicStore.Dtos.ImageResponse;
-import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
-import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
-import com.rinku.electronic.store.ElectronicStore.Entity.User;
-import com.rinku.electronic.store.ElectronicStore.Service.FileService;
-import com.rinku.electronic.store.ElectronicStore.Service.UserService;
+import com.rinku.electronic.store.ElectronicStore.dtos.ApiResponseMessage;
+import com.rinku.electronic.store.ElectronicStore.dtos.ImageResponse;
+import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
+import com.rinku.electronic.store.ElectronicStore.dtos.UserDto;
+import com.rinku.electronic.store.ElectronicStore.service.FileService;
+import com.rinku.electronic.store.ElectronicStore.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.engine.internal.ImmutableEntityEntry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

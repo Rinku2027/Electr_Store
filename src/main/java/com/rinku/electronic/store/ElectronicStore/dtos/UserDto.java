@@ -1,6 +1,6 @@
-package com.rinku.electronic.store.ElectronicStore.Dtos;
+package com.rinku.electronic.store.ElectronicStore.dtos;
 
-import com.rinku.electronic.store.ElectronicStore.Validation.ImageNameValid;
+import com.rinku.electronic.store.ElectronicStore.validation.ImageNameValid;
 import lombok.*;
 
 import javax.validation.constraints.*;

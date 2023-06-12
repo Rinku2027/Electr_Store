@@ -1,7 +1,7 @@
-package com.rinku.electronic.store.ElectronicStore.Service.ServiceImpl;
+package com.rinku.electronic.store.ElectronicStore.service.serviceImpl;
 
-import com.rinku.electronic.store.ElectronicStore.Exception.BadApiRequest;
-import com.rinku.electronic.store.ElectronicStore.Service.FileService;
+import com.rinku.electronic.store.ElectronicStore.exception.BadApiRequest;
+import com.rinku.electronic.store.ElectronicStore.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

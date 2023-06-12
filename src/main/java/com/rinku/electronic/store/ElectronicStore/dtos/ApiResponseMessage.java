@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Dtos;
+package com.rinku.electronic.store.ElectronicStore.dtos;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

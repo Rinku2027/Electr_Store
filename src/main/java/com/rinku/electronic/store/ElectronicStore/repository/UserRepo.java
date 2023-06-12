@@ -1,6 +1,6 @@
-package com.rinku.electronic.store.ElectronicStore.Repository;
+package com.rinku.electronic.store.ElectronicStore.repository;
 
-import com.rinku.electronic.store.ElectronicStore.Entity.User;
+import com.rinku.electronic.store.ElectronicStore.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

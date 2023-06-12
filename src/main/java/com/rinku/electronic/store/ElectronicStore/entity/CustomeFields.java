@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Entity;
+package com.rinku.electronic.store.ElectronicStore.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

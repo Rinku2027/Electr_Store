@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Validation;
+package com.rinku.electronic.store.ElectronicStore.validation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

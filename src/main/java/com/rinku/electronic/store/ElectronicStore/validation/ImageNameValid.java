@@ -1,4 +1,4 @@
-package com.rinku.electronic.store.ElectronicStore.Validation;
+package com.rinku.electronic.store.ElectronicStore.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

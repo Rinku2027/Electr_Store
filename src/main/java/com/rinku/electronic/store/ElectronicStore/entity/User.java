@@ -1,8 +1,6 @@
-package com.rinku.electronic.store.ElectronicStore.Entity;
+package com.rinku.electronic.store.ElectronicStore.entity;
 
 import lombok.*;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import javax.persistence.*;
 @Entity

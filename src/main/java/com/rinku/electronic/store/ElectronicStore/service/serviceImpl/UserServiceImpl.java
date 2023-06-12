@@ -1,13 +1,13 @@
-package com.rinku.electronic.store.ElectronicStore.Service.ServiceImpl;
+package com.rinku.electronic.store.ElectronicStore.service.serviceImpl;
 
-import com.rinku.electronic.store.ElectronicStore.Dtos.PageableResponse;
-import com.rinku.electronic.store.ElectronicStore.Dtos.UserDto;
-import com.rinku.electronic.store.ElectronicStore.Entity.User;
-import com.rinku.electronic.store.ElectronicStore.Exception.ResourceNotFoundException;
-import com.rinku.electronic.store.ElectronicStore.Helper.ApiConstants;
-import com.rinku.electronic.store.ElectronicStore.Helper.Helper;
-import com.rinku.electronic.store.ElectronicStore.Repository.UserRepo;
-import com.rinku.electronic.store.ElectronicStore.Service.UserService;
+import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
+import com.rinku.electronic.store.ElectronicStore.dtos.UserDto;
+import com.rinku.electronic.store.ElectronicStore.entity.User;
+import com.rinku.electronic.store.ElectronicStore.exception.ResourceNotFoundException;
+import com.rinku.electronic.store.ElectronicStore.helper.ApiConstants;
+import com.rinku.electronic.store.ElectronicStore.helper.Helper;
+import com.rinku.electronic.store.ElectronicStore.repository.UserRepo;
+import com.rinku.electronic.store.ElectronicStore.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;

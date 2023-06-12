@@ -1,10 +1,9 @@
-package com.rinku.electronic.store.ElectronicStore.Helper;
+package com.rinku.electronic.store.ElectronicStore.helper;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
