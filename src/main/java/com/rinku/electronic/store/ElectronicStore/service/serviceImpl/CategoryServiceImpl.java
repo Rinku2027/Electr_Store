@@ -67,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Category> all = categoryRepo.findAll(pageable);
         Page<Category> page = all;
-        PageableResponse<CategoryDto> response = Helper.getPageableResponse(page,CategoryDto.class)
+        PageableResponse<CategoryDto> response = Helper.getPageableResponse(page,CategoryDto.class);
         log.info(" completed Request  for getting users ");
         return response;
     }
