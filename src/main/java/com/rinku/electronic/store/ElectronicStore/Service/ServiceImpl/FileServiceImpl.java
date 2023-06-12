@@ -17,7 +17,7 @@ public class FileServiceImpl implements FileService {
     private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
 
     @Override
-    public String uploadImage(MultipartFile file, String path) throws IOException {
+    public String uploadFile(MultipartFile file, String path) throws IOException {
         //acb.png
         String originalFilename = file.getOriginalFilename();
         logger.info("Filename :{}", originalFilename);

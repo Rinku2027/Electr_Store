@@ -3,6 +3,7 @@ package com.rinku.electronic.store.ElectronicStore.Exception;
 import com.rinku.electronic.store.ElectronicStore.Dtos.ApiResponseMessage;
 import com.rinku.electronic.store.ElectronicStore.Helper.ApiResponse;
 import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 @Builder
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandling {
-    private Logger logger = LoggerFactory.getLogger(GlobalExceptionHandling.class);
+//    private Logger logger = LoggerFactory.getLogger(GlobalExceptionHandling.class);
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiResponse> ResourceNotFoundExceptionHandling(ResourceNotFoundException rs) {
 
-        logger.info("Exception Handler Invoked");
+        log.info("Exception Handler Invoked");
      //   String msg = rs.getMessage();
         ApiResponseMessage response =  ApiResponseMessage.builder().message(rs.getMessage()).status(HttpStatus.NOT_FOUND).success(true).build();
                 return new ResponseEntity(response, HttpStatus.NOT_FOUND);
@@ -40,7 +42,7 @@ public class GlobalExceptionHandling {
     }
     @ExceptionHandler(BadApiRequest.class)
     public ResponseEntity<ApiResponse> handleBadApiRequest(BadApiRequest ex) {
-        logger.info("Bad Api Request");
+        log.info("Bad Api Request");
        // String msg = rs.getMessage();
         ApiResponseMessage response = ApiResponseMessage.builder().message(ex.getMessage()).status(HttpStatus.BAD_REQUEST).success(false).build();
         return new ResponseEntity(response,HttpStatus.BAD_REQUEST);
