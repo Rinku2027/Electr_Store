@@ -19,6 +19,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Slf4j
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -30,6 +32,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto create(CategoryDto categoryDto) {
+
+        String categoryId = UUID.randomUUID().toString();
+        categoryDto.setCategoryId(categoryId);
         log.info(" Initiated Request for creating category");
         Category category = mapper.map(categoryDto, Category.class);
 
@@ -71,7 +76,6 @@ public class CategoryServiceImpl implements CategoryService {
         log.info(" completed Request  for getting users ");
         return response;
     }
-
     @Override
     public void deletecategory(String categoryId) {
 

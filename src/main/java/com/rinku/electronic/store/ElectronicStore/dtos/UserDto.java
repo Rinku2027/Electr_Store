@@ -15,10 +15,9 @@ public class UserDto {
     @Size(min=3,max=20,message="Name must be in between 3 char to 10 char")
     private String name;
     @NotEmpty
-   //@Email(message = "Invalid email format")
-    @Pattern(regexp="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message="Invalid email format")
+   @Email(message = "Invalid email format")
     private String email;
-@ImageNameValid
+    @ImageNameValid
     private String imageName;
     @NotEmpty(message="Write something about yourself")
     private String about;

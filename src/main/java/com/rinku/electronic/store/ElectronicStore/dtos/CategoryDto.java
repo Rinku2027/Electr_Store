@@ -20,7 +20,7 @@ public class CategoryDto {
     @Size(min = 5, max = 15, message = "title must be within limit (min =5,max=15) .....!! ")
     private String title;
     @NotBlank
-    @Size(min = 10, max = 30, message = "description must be within min length 10 and max length 30")
+  //  @Size(min = 5, max = 30, message = "description must be within min length 5 and max length 30")
     private String description;
     private String coverImage;
 
