@@ -32,12 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto create(CategoryDto categoryDto) {
-
         String categoryId = UUID.randomUUID().toString();
         categoryDto.setCategoryId(categoryId);
         log.info(" Initiated Request for creating category");
         Category category = mapper.map(categoryDto, Category.class);
-
         Category save =categoryRepo.save(category);
         log.info(" completed Request for creating category");
         return this.mapper.map(save, CategoryDto.class);
@@ -55,10 +53,8 @@ public class CategoryServiceImpl implements CategoryService {
         log.info(" Initiated Request for updating category with categoryId :{}", categoryId);
         Category category = this.categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
-
         category.setTitle(categoryDto.getTitle());
         category.setDescription(categoryDto.getDescription());
-
         Category save = this.categoryRepo.save(category);
         log.info(" completed Request for updating category with categoryId :{}", categoryId);
         return this.mapper.map(save, CategoryDto.class);
@@ -78,7 +74,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
     @Override
     public void deletecategory(String categoryId) {
-
         log.info(" Initiated Request for deleting category with categoryId :{}", categoryId);
         Category category = this.categoryRepo.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));

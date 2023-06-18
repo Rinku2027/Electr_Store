@@ -26,8 +26,7 @@ import java.io.InputStream;
 public class CategoryController {
 
     private Logger logger= LoggerFactory.getLogger(CategoryController.class);
-
-    @Autowired
+   @Autowired
     private CategoryService categoryService;
     @Autowired
     private FileService fileService;
@@ -40,7 +39,7 @@ public class CategoryController {
      * @return
      * @ApiNote This API is used to create user
      */
-    @PostMapping("/category")
+    @PostMapping
     public ResponseEntity<CategoryDto> createcategory(@Valid @RequestBody CategoryDto cate) {
         logger.info(" Initiated Request for creating category");
         CategoryDto dto = this.categoryService.create(cate);
