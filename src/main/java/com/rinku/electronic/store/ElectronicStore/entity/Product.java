@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +19,7 @@ import java.util.Date;
 public class Product {
     @Id
     private String productId;
+    @Column(name="Title")
     private String title;
     @Column(length = 10000)
     private String description;
@@ -29,4 +29,5 @@ public class Product {
     private Date addedDate;
     private boolean live;
     private boolean stock;
+    private String productImageName;
     }
