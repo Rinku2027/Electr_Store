@@ -161,9 +161,6 @@ private Logger logger= LoggerFactory.getLogger(UserController.class);
             logger.info("User Image Name: {}",user.getImageName());
             InputStream resource = fileService.getResource(imageUploadPath,user.getImageName());
             response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-            StreamUtils.copy(resource,response.getOutputStream());
-
-        }
-
+            StreamUtils.copy(resource,response.getOutputStream());}
 
     }

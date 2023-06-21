@@ -1,5 +1,6 @@
 package com.rinku.electronic.store.ElectronicStore.service;
 
+import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
 import com.rinku.electronic.store.ElectronicStore.dtos.ProductDto;
 
 import java.util.List;
@@ -12,10 +13,10 @@ public interface ProductService {
 
     void delete(String productId);
     ProductDto get(String productId);
-    List<ProductDto> getAll();
-    List<ProductDto> getAllLive();
+    PageableResponse<ProductDto> getAll(int pageNumber,int pageSize,String sortBy,String sortDir);
+    PageableResponse<ProductDto> getAllLive(int pageNumber,int pageSize,String sortBy,String sortDir);
 
-    List<ProductDto> searchByTitle(String subTitle);
+    PageableResponse<ProductDto> searchByTitle(String subTitle,int pageNumber,int pageSize,String sortBy,String sortDir);
 
 
 
