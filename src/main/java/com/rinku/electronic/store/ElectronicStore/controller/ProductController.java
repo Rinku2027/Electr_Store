@@ -1,5 +1,4 @@
 package com.rinku.electronic.store.ElectronicStore.controller;
-
 import com.rinku.electronic.store.ElectronicStore.dtos.*;
 import com.rinku.electronic.store.ElectronicStore.service.FileService;
 import com.rinku.electronic.store.ElectronicStore.service.ProductService;
@@ -22,10 +21,8 @@ import java.io.InputStream;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
     @Autowired
     private ProductService productService;
-
     @Autowired
     private FileService fileService;
     @Value("${product.image.path}")
