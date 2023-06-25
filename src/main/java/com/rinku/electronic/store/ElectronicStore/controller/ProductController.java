@@ -29,6 +29,7 @@ public class ProductController {
     private String imagePath;
 
     /**
+     * @author Rinku Patil
      * @param productDto
      * @return
      */
@@ -41,6 +42,7 @@ public class ProductController {
     }
 
     /**
+     * @author Rinku Patil
      * @param pageNumber
      * @param pageSize
      * @param sortBy
@@ -60,6 +62,7 @@ public class ProductController {
 
 
     /**
+     * @author Rinku Patil
      * @param productDto
      * @param productId
      * @return
@@ -74,6 +77,11 @@ public class ProductController {
 
     }
 
+    /**
+     * @author Rinku Patil
+     * @param productId
+     * @return
+     */
     @GetMapping("/{productId}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable String productId) {
         log.info(" Initiated Request for getting product with productId :{}", productId);
@@ -82,6 +90,11 @@ public class ProductController {
         return new ResponseEntity<ProductDto>(dto, HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param productId
+     * @return
+     */
     @DeleteMapping("/{productId}")
     public ResponseEntity<ApiResponseMessage> deleteProduct(@PathVariable String productId) {
         log.info(" Initiated Request for deleting productId with productId :{}", productId);
@@ -96,7 +109,14 @@ public class ProductController {
         return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
     }
 
-
+    /**
+     * @author Rinku Patil
+     * @param pageNumber
+     * @param pageSize
+     * @param sortBy
+     * @param sortDir
+     * @return
+     */
     @GetMapping("/live")
     public ResponseEntity<PageableResponse<ProductDto>> getAllLive(
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
@@ -108,6 +128,15 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllLive(pageNumber, pageSize, sortBy, sortDir), HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param query
+     * @param pageNumber
+     * @param pageSize
+     * @param sortBy
+     * @param sortDir
+     * @return
+     */
     @GetMapping("/search/{query}")
     public ResponseEntity<PageableResponse<ProductDto>> searchProduct(
             @PathVariable String query,
@@ -120,6 +149,13 @@ public class ProductController {
         return new ResponseEntity<>(productService.searchByTitle(query, pageNumber, pageSize, sortBy, sortDir), HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param image
+     * @param productId
+     * @return
+     * @throws IOException
+     */
 
     @PostMapping("/image/{productId}")
     public ResponseEntity<ImageResponse> uploadProductImage(@RequestParam("productImage") MultipartFile image, @PathVariable String productId) throws IOException {
@@ -135,6 +171,12 @@ public class ProductController {
         }
     }
 
+    /**
+     * @author Rinku Patil
+     * @param productId
+     * @param response
+     * @throws IOException
+     */
     //Serve User Image
     @GetMapping("/image/{productId}")
     public void serveUserImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
