@@ -47,6 +47,14 @@ public class CategoryController {
         return new ResponseEntity<CategoryDto>(dto, HttpStatus.CREATED);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param pageNumber
+     * @param pageSize
+     * @param sortBy
+     * @param sortDir
+     * @return
+     */
     @GetMapping
     public ResponseEntity<PageableResponse<CategoryDto>> getAllUsers(
             @RequestParam(value = "pageNumber", defaultValue = "0", required = false) int pageNumber,
@@ -58,6 +66,12 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.getAll(pageNumber, pageSize, sortBy, sortDir), HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param cate
+     * @param categoryId
+     * @return
+     */
 
     @PutMapping("/{categoryId}")
     public ResponseEntity<CategoryDto> updatecategory(@Valid @RequestBody CategoryDto cate,
@@ -68,6 +82,12 @@ public class CategoryController {
         return new ResponseEntity<CategoryDto>(dto, HttpStatus.OK);
 
     }
+
+    /**
+     * @author Rinku Patil
+     * @param categoryId
+     * @return
+     */
     @GetMapping("/categories/{categoryId}")
     public ResponseEntity<CategoryDto> getcategory(@PathVariable String  categoryId) {
         logger.info(" Initiated Request for getting category with categoryId :{}", categoryId);
@@ -76,6 +96,11 @@ public class CategoryController {
         return new ResponseEntity<CategoryDto>(dto, HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param categoryId
+     * @return
+     */
     @DeleteMapping("categories/{categoryId}")
     public ResponseEntity<ApiResponseMessage> deletecategory(@PathVariable String  categoryId) {
         logger.info(" Initiated Request for deleting category with categoryId :{}", categoryId);
@@ -90,6 +115,13 @@ public class CategoryController {
         return new ResponseEntity<ApiResponseMessage>(message, HttpStatus.OK);
     }
 
+    /**
+     * @author Rinku Patil
+     * @param image
+     * @param categoryId
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/image/{categoryId}")
     public ResponseEntity<ImageResponse> uploadUserImage(@RequestParam("catImage") MultipartFile image, @PathVariable String categoryId) throws IOException {
         {
@@ -103,6 +135,13 @@ public class CategoryController {
             return new ResponseEntity<>(imageResponse, HttpStatus.CREATED);
         }
     }
+
+    /**
+     * @author Rinku Patil
+     * @param categoryId
+     * @param response
+     * @throws IOException
+     */
     //Serve User Image
     @GetMapping("/image/{categoryId}")
     public void serveUserImage(@PathVariable String categoryId, HttpServletResponse response) throws IOException {

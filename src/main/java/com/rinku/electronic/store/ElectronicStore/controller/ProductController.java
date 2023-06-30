@@ -179,13 +179,15 @@ public class ProductController {
      */
     //Serve User Image
     @GetMapping("/image/{productId}")
-    public void serveUserImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
+    public void serveProductImage(@PathVariable String productId, HttpServletResponse response) throws IOException {
         ProductDto product = productService.get(productId);
-        log.info("User Image Name: {}", product.getProductImageName());
+        log.info("Product Image Name: {}", product.getProductImageName());
         InputStream resource = fileService.getResource(imagePath, product.getProductImageName());
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         StreamUtils.copy(resource, response.getOutputStream());
 
     }
+
+
 }
 
