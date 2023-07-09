@@ -2,6 +2,7 @@ package com.rinku.electronic.store.ElectronicStore.controller;
 import com.rinku.electronic.store.ElectronicStore.dtos.*;
 import com.rinku.electronic.store.ElectronicStore.service.FileService;
 import com.rinku.electronic.store.ElectronicStore.service.ProductService;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import java.io.InputStream;
 @Slf4j
 @RestController
 @RequestMapping("/products")
+@Builder
 public class ProductController {
     @Autowired
     private ProductService productService;
