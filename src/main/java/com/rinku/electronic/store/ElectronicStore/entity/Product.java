@@ -1,9 +1,7 @@
 package com.rinku.electronic.store.ElectronicStore.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name="Product")
+@Builder
 public class Product {
     @Id
     private String productId;
@@ -30,4 +29,6 @@ public class Product {
     private boolean live;
     private boolean stock;
     private String productImageName;
-    }
+
+
+}
