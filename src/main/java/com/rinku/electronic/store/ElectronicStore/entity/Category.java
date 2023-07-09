@@ -1,9 +1,6 @@
 package com.rinku.electronic.store.ElectronicStore.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +13,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name="categories")
+@Builder
 public class Category {
     @Id
     @Column(name="id")
@@ -25,6 +23,8 @@ public class Category {
     @Column(name="category_desc", length = 500)
     private String description;
     private String coverImage;
+
+
     //Other attributes
 
 
