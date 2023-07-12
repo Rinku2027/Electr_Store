@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,11 +17,10 @@ import java.util.List;
 public class Cart {
     @Id
     private String cartId;
-
     private Date createdAt;
     @OneToOne
     private User user;
-    @OneToMany(mappedBy = "cart",cascade = defa)
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<CartItem> items=new ArrayList<>();
 
 }
