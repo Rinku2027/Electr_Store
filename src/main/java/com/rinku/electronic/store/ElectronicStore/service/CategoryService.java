@@ -2,7 +2,6 @@ package com.rinku.electronic.store.ElectronicStore.service;
 
 import com.rinku.electronic.store.ElectronicStore.dtos.CategoryDto;
 import com.rinku.electronic.store.ElectronicStore.dtos.PageableResponse;
-
 import java.util.List;
 
 public interface CategoryService {
