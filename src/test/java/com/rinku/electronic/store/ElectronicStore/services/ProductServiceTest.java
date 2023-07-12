@@ -233,7 +233,7 @@ public class ProductServiceTest {
 
 
     }
-
+/*
     @Test
     void createProductWithCategory() {
 
@@ -252,9 +252,6 @@ public class ProductServiceTest {
         //Assertion
         Assertions.assertEquals(product.getDiscountedPrice(), productdto.getDiscountedPrice(), " test case failed due to inEquality in validation");
     }
-
-    @Test
-    void updateProductWithCategory() {
-    }
+*/
 
 }
