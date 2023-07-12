@@ -140,7 +140,7 @@ public class UserControllerTest {
     @Test
     void updateUserTest() throws Exception {
 
-        String userId ="abc";
+        String userId ="123";
 
         UserDto userdto = this.mapper.map(user, UserDto.class);
         Mockito.when(userServiceI.updateUser(Mockito.any(),Mockito.anyString())).thenReturn(userdto);
