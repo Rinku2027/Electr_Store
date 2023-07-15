@@ -1,6 +1,6 @@
 package com.rinku.electronic.store.ElectronicStore.service.serviceImpl;
 
-import com.rinku.electronic.store.ElectronicStore.exception.BadApiRequest;
+import com.rinku.electronic.store.ElectronicStore.exception.BadApiRequestException;
 import com.rinku.electronic.store.ElectronicStore.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +42,7 @@ public class FileServiceImpl implements FileService {
         }
     else
     {
-        throw new BadApiRequest("File with this " +extension + "Not Allowed");
+        throw new BadApiRequestException("File with this " +extension + "Not Allowed");
     }    }
 
     @Override

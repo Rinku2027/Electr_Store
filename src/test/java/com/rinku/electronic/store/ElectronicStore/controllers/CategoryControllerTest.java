@@ -20,20 +20,13 @@ import java.util.Arrays;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 public class CategoryControllerTest {
-
-
     @MockBean
     private CategoryServiceImpl categoryServiceI;
-
-
     @Autowired
     private ModelMapper mapper;
-
     @Autowired
     private MockMvc mockmvc;
-
     Category category;
 
     @BeforeEach
@@ -42,7 +35,6 @@ public class CategoryControllerTest {
                 .title("sd card related category")
                 .description("SD card available for every smart")
                 .coverImage("abc.png").build();
-
     }
     @Test
     void createCategory() throws Exception {
