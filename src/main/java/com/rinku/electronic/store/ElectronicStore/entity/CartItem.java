@@ -3,7 +3,6 @@ package com.rinku.electronic.store.ElectronicStore.entity;
 import lombok.*;
 
 import javax.persistence.*;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,7 +11,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="cart_items")
 public class CartItem {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cartitems;
@@ -26,6 +24,6 @@ public class CartItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Cart cart;
-
-
 }
+
+
