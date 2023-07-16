@@ -98,20 +98,20 @@ public class CategoryServiceImplTest {
     void getAllCategories() {
         Category category1 = Category.builder()
                 .coverImage("pqr.png")
-                .title(" Anniversary pics")
-                .description(" some of our 1st Anniversary pics ")
+                .title("  pics")
+                .description(" some of our 1st  pics ")
                 .build();
 
         Category category2 = Category.builder()
-                .coverImage("lmn.png")
-                .title(" Anniversary videos")
-                .description(" some of our 1st Anniversary videos ")
+                .coverImage("lcwd.png")
+                .title("  videos")
+                .description(" some of our 1st  videos ")
                 .build();
 
         Category category3 = Category.builder()
                 .coverImage("stu.png")
-                .title(" Anniversary family pics")
-                .description(" some of our 1st Anniversary family pics ")
+                .title("  family pics")
+                .description(" some of our 1st  family pics ")
                 .build();
 
 
