@@ -30,10 +30,8 @@ import java.util.Set;
 public class UserServiceTest {
     @MockBean
     private UserRepo userRepo;
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private ModelMapper mapper;
 
@@ -60,12 +58,9 @@ public class UserServiceTest {
         //matching using assertion
         Assertions.assertNotNull(userDto);
         Assertions.assertEquals("Rinku", userDto.getName(), "UserName not matched ");
-
     }
-
     @Test
     void getUserById() {
-
         String userId = "xyz";
         //stubbing
         Mockito.when(userRepo.findById(Mockito.anyString())).thenReturn(Optional.of(user));
@@ -112,12 +107,11 @@ public class UserServiceTest {
         String userId = "abc";
         UserDto userDto = UserDto.builder()
                 .about(" updated testing for updateProduct method")
-                .name("Shweta")
+                .name("rinku")
                 .email("rinkupatil.20@gmail.com")
                 .gender("female")
                 .password("shweta@123")
                 .imageName("shweta.png").build();
-
         //stubbing
         Mockito.when(userRepo.findById(Mockito.anyString())).thenReturn(Optional.of(user));
         Mockito.when(userRepo.save(Mockito.any())).thenReturn(user);
@@ -171,8 +165,6 @@ public class UserServiceTest {
                 .gender("female")
                 .password("rachana@123")
                 .imageName("rachna.png").build();
-
-
         String keyword = "rachana";
         //stubbing
         Mockito.when(userRepo.findByNameContaining(keyword)).thenReturn(Arrays.asList(user, user1, user2));
