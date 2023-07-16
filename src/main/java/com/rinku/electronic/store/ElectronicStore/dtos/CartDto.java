@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CartDto {
     private String cartId;
-
     private Date createdAt;
     @OneToOne
     private UserDto user;
