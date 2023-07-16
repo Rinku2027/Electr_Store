@@ -23,7 +23,6 @@ import java.io.InputStream;
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
-
     private Logger logger= LoggerFactory.getLogger(CategoryController.class);
    @Autowired
     private CategoryService categoryService;
